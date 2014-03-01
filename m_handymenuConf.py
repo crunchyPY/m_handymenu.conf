@@ -50,8 +50,9 @@ class HandyConfGui():
 				tree.write('/usr/local/bin/handy-menu/handy-menu.glade')
 			
 	def update_handymenu(self, widget):
-	    try:
+		try:
 			os.system('killall handymenu.py  && handymenu.sh &')
+			
 		except OSError:
 			pass 
 			
