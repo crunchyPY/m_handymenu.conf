@@ -50,7 +50,10 @@ class HandyConfGui():
 				tree.write('/usr/local/bin/handy-menu/handy-menu.glade')
 			
 	def update_handymenu(self, widget):
-		os.system('killall handymenu.py  && handymenu.sh &') 
+	    try:
+			os.system('killall handymenu.py  && handymenu.sh &')
+		except OSError:
+			pass 
 			
 	def analyse_config(self, widget, checkOption1, checkOption2):
 		'''analyse la configuration pour avoir les bonnes valeur sur les boutons'''
