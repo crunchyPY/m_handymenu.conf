@@ -4,7 +4,7 @@
 import pygtk
 pygtk.require("2.0")
 import os, gtk
-from os import chdir
+
 from lxml import etree
 
 EMPLACEMENT_ICONS = "/usr/local/bin/handy-menu/themes/icons/"
