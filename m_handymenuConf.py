@@ -7,7 +7,7 @@ import os, gtk
 from os import chdir
 from lxml import etree
 
-EMPLACEMENT = os.path.expanduser('~') + "/.config/handymenu.conf/"
+EMPLACEMENT = os.path.expanduser('~') + "/usr/local/bin/handy-menu/themes/"
 options = {}
 tree = etree.parse('/usr/local/bin/handy-menu/handy-menu.glade')
 
