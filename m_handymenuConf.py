@@ -30,7 +30,7 @@ class HandyConfGui():
 		if (choix == "Bannières"):
 			pass 
 		else:
-			tree.find('//object[@id="banner"]/property[@name="pixbuf"]').text = EMPLACEMENT_BANNIERES + 'bannieres/' + choix
+			tree.find('//object[@id="banner"]/property[@name="pixbuf"]').text = EMPLACEMENT_BANNIERES  + choix
 			tree.write('/usr/local/bin/handy-menu/handy-menu.glade')
 			
 	def liste_icones_dispo(self, liste_icones):
