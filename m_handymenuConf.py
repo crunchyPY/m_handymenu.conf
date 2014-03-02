@@ -7,7 +7,9 @@ import os, gtk
 from os import chdir
 from lxml import etree
 
-EMPLACEMENT = "/usr/local/bin/handy-menu/themes/"
+EMPLACEMENT_ICONS = "/usr/local/bin/handy-menu/themes/icons/"
+EMPLACEMENT_BANNIERES = "/usr/local/bin/handy-menu/themes/banniere/"
+
 options = {}
 tree = etree.parse('/usr/local/bin/handy-menu/handy-menu.glade')
 
@@ -18,7 +20,7 @@ class HandyConfGui():
 		
 	def liste_bannieres_dispo(self, liste_banniere):
 		'''forme la liste deroulante par rapport aux bannieres dispo'''
-		bannieres_dispo= [nom for nom  in os.listdir(EMPLACEMENT + "bannieres/") if os.path.isfile(EMPLACEMENT + "bannieres/" + nom) == True]
+		bannieres_dispo= [nom for nom  in os.listdir(EMPLACEMENT_BANNIERES) if os.path.isfile(EMPLACEMENT_BANNIERES + nom) == True]
 		for banniere in bannieres_dispo:
 			liste_banniere.append_text(banniere)
 			
@@ -28,11 +30,11 @@ class HandyConfGui():
 		if (choix == "Bannières"):
 			pass 
 		else:
-			tree.find('//object[@id="banner"]/property[@name="pixbuf"]').text = EMPLACEMENT + 'bannieres/' + choix
+			tree.find('//object[@id="banner"]/property[@name="pixbuf"]').text = EMPLACEMENT_BANNIERES + 'bannieres/' + choix
 			tree.write('/usr/local/bin/handy-menu/handy-menu.glade')
 			
 	def liste_icones_dispo(self, liste_icones):
-		icones_dispo = [nom for nom  in os.listdir(EMPLACEMENT + "icons/") if os.path.isdir(EMPLACEMENT + "icons/" + nom) == True]
+		icones_dispo = [nom for nom  in os.listdir(EMPLACEMENT_ICONS) if os.path.isdir(EMPLACEMENT_ICONS + nom) == True]
 		for icone in icones_dispo:
 			liste_icones.append_text(icone)
 			
@@ -46,7 +48,7 @@ class HandyConfGui():
 		else:
 			icones = tree.xpath('//object[@class="GtkImage"]/property[@name="pixbuf"]')
 			for icone in icones:
-				icone.text = EMPLACEMENT + "icons/" + choix + '/' + os.path.basename(icone.text)
+				icone.text = EMPLACEMENT_ICONS + choix + '/' + os.path.basename(icone.text)
 				tree.write('/usr/local/bin/handy-menu/handy-menu.glade')
 			
 	def update_handymenu(self, widget):
